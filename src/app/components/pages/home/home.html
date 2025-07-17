@@ -1,0 +1,74 @@
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section" *ngIf="featuredPost">
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="category-badge">{{ featuredPost.category }}</span>
+        <h1 class="hero-title">{{ featuredPost.title }}</h1>
+        <p class="hero-excerpt">{{ featuredPost.excerpt }}</p>
+        <div class="hero-meta">
+          <span class="author">Por {{ featuredPost.author }}</span>
+          <span class="separator">•</span>
+          <span class="date">{{ featuredPost.date | date:'dd/MM/yyyy' }}</span>
+          <span class="separator">•</span>
+          <span class="read-time">{{ featuredPost.readTime }} min de leitura</span>
+        </div>
+        <a [routerLink]="getPostRoute(featuredPost.id)" mat-raised-button color="primary" class="read-more-btn">
+          Ler Artigo
+          <mat-icon>arrow_forward</mat-icon>
+        </a>
+      </div>
+      <div class="hero-image">
+        <img [src]="featuredPost.imageUrl" [alt]="featuredPost.title" *ngIf="featuredPost.imageUrl">
+      </div>
+    </div>
+  </section>
+
+  <!-- Posts Grid -->
+  <section class="posts-section">
+    <div class="section-header">
+      <h2>Últimos Artigos</h2>
+      <p>Descubra as últimas análises e críticas sobre o mundo do cinema</p>
+    </div>
+    
+    <div class="posts-grid">
+      <mat-card class="post-card" *ngFor="let post of posts.slice(1); trackBy: trackByPostId">
+        <div class="card-image" *ngIf="post.imageUrl">
+          <img [src]="post.imageUrl" [alt]="post.title">
+        </div>
+        
+        <mat-card-header>
+          <mat-card-title>{{ post.title }}</mat-card-title>
+          <mat-card-subtitle>
+            <span class="author">{{ post.author }}</span>
+            <span class="separator">•</span>
+            <span class="date">{{ post.date | date:'dd/MM/yyyy' }}</span>
+          </mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <p class="post-excerpt">{{ post.excerpt }}</p>
+          
+          <div class="post-tags">
+            <mat-chip-set>
+              <mat-chip *ngFor="let tag of post.tags.slice(0, 3)">{{ tag }}</mat-chip>
+            </mat-chip-set>
+          </div>
+        </mat-card-content>
+        
+        <mat-card-actions>
+          <div class="card-actions">
+            <div class="post-meta">
+              <span class="category">{{ post.category }}</span>
+              <span class="read-time">{{ post.readTime }} min</span>
+            </div>
+            <a [routerLink]="getPostRoute(post.id)" mat-button color="primary">
+              Ler Mais
+              <mat-icon>arrow_forward</mat-icon>
+            </a>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </section>
+</div>

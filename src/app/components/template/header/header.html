@@ -1,0 +1,42 @@
+<mat-toolbar class="toolbar mat-elevation-z4">
+    <a routerLink="/" class="logo-link">
+        <mat-icon>world</mat-icon>
+        <div class="title-group">
+            <i class="material-icons">theaters</i>
+            <h1>Films Blog</h1>
+        </div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <ul class="desktop-nav">
+        <li>
+            <a routerLink="/" class="nav-link" title="Home">
+                <mat-icon>home</mat-icon>
+                <span>Home</span>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/about" class="nav-link" title="Sobre o autor">
+                <mat-icon>person</mat-icon>
+                <span>Sobre</span>
+            </a>
+        </li>
+    </ul>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <button mat-icon-button [matMenuTriggerFor]="mobileMenu" class="menu-button">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #mobileMenu="matMenu" class="mobile-menu">
+            <button mat-menu-item routerLink="/">
+                <mat-icon>home</mat-icon>
+                <span>Home</span>
+            </button>
+            <button mat-menu-item routerLink="/about">
+                <mat-icon>person</mat-icon>
+                <span>Sobre o autor</span>
+            </button>
+        </mat-menu>
+    </nav>
+</mat-toolbar>

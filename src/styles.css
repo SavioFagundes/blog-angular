@@ -1,1 +1,101 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Icons|Material+Icons+Outlined');
+@import 'custom-theme.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --white: #f2f2f2;
+    --black: #000000;
+    --dark-gray: #2c2c2c;
+    --darkest-gray: #202020;
+    --red: #e83f5b;
+    --green: #4cd62b;
+}
+
+html, body{
+    height: 100%;
+    background-color: var(--darkest-gray);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Angular Material Overrides */
+.mat-mdc-card {
+    background-color: var(--dark-gray) !important;
+    color: var(--white) !important;
+}
+
+.mat-mdc-button {
+    color: var(--red) !important;
+}
+
+.mat-mdc-raised-button {
+    background-color: var(--red) !important;
+    color: var(--white) !important;
+}
+
+.mat-mdc-chip {
+    background-color: rgba(232, 63, 91, 0.2) !important;
+    color: var(--red) !important;
+}
+
+.mat-mdc-menu-panel {
+    background-color: var(--white) !important;
+}
+
+.mat-mdc-menu-item {
+    color: var(--darkest-gray) !important;
+}
+
+.mat-mdc-menu-item:hover {
+    background-color: rgba(232, 63, 91, 0.1) !important;
+}
+
+.msg-error{
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.msg-success{
+    background-color: var(--green);
+    color: var(--white);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--darkest-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--red);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d73650;
+}
+
+@media screen and (min-width: 768px) {
+    
+    
+    @keyframes backgroundFadeIn{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+}

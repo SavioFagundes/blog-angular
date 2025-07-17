@@ -1,0 +1,85 @@
+<div class="post-detail-container" *ngIf="!loading && post">
+  <!-- Back Button -->
+  <div class="back-button-container">
+    <button mat-button (click)="goBack()" class="back-button">
+      <mat-icon>arrow_back</mat-icon>
+      Voltar
+    </button>
+  </div>
+
+  <!-- Post Header -->
+  <div class="post-header">
+    <div class="post-meta">
+      <span class="category-badge">{{ post.category }}</span>
+      <div class="meta-info">
+        <span class="author">Por {{ post.author }}</span>
+        <span class="separator">•</span>
+        <span class="date">{{ post.date | date:'dd/MM/yyyy' }}</span>
+        <span class="separator">•</span>
+        <span class="read-time">{{ post.readTime }} min de leitura</span>
+      </div>
+    </div>
+    
+    <h1 class="post-title">{{ post.title }}</h1>
+    <p class="post-excerpt">{{ post.excerpt }}</p>
+    
+    <!-- Tags -->
+    <div class="post-tags">
+      <mat-chip-set>
+        <mat-chip *ngFor="let tag of post.tags">{{ tag }}</mat-chip>
+      </mat-chip-set>
+    </div>
+  </div>
+
+  <!-- Featured Image -->
+  <div class="featured-image" *ngIf="post.imageUrl">
+    <img [src]="post.imageUrl" [alt]="post.title">
+  </div>
+
+  <!-- Post Content -->
+  <div class="post-content">
+    <div [innerHTML]="post.content"></div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <!-- Related Posts -->
+  <div class="related-posts" *ngIf="relatedPosts.length > 0">
+    <h3>Artigos Relacionados</h3>
+    <div class="related-posts-grid">
+      <mat-card class="related-post-card" *ngFor="let relatedPost of relatedPosts" (click)="navigateToPost(relatedPost.id)">
+        <div class="related-card-image" *ngIf="relatedPost.imageUrl">
+          <img [src]="relatedPost.imageUrl" [alt]="relatedPost.title">
+        </div>
+        <mat-card-content>
+          <h4>{{ relatedPost.title }}</h4>
+          <p>{{ relatedPost.excerpt }}</p>
+          <div class="related-meta">
+            <span class="category">{{ relatedPost.category }}</span>
+            <span class="read-time">{{ relatedPost.readTime }} min</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!-- Loading State -->
+<div class="loading-container" *ngIf="loading">
+  <div class="loading-spinner">
+    <mat-icon>refresh</mat-icon>
+    <p>Carregando...</p>
+  </div>
+</div>
+
+<!-- Not Found State -->
+<div class="not-found-container" *ngIf="!loading && !post">
+  <div class="not-found-content">
+    <mat-icon>error_outline</mat-icon>
+    <h2>Artigo não encontrado</h2>
+    <p>O artigo que você está procurando não existe ou foi removido.</p>
+    <button mat-raised-button color="primary" (click)="goBack()">
+      Voltar ao Início
+    </button>
+  </div>
+</div>
