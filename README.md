@@ -54,7 +54,7 @@ O Films Blog é uma aplicação web responsiva que apresenta:
 
 1. **Clone o repositório**
 ```bash
-git clone <url-do-repositorio>
+git clone <https://github.com/SavioFagundes/blog-angular.git>
 cd angular-blog
 ```
 
@@ -188,9 +188,7 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 ## 👨‍💻 Autor
 
-**João Silva** - Crítico de Cinema & Desenvolvedor
-- 📧 Email: joao.silva@filmsblog.com
-- 🌐 Website: www.filmsblog.com
+Savio Fagundes
 
 ## 🙏 Agradecimentos
 
